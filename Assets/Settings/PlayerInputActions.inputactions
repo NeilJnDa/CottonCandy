@@ -42,10 +42,19 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Rotate",
-                    "type": "Value",
+                    "name": "RotateLeft",
+                    "type": "Button",
                     "id": "6bf80d51-1a79-4b34-98f5-4f595f4b8440",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RotateRight",
+                    "type": "Button",
+                    "id": "e98b0a36-7778-4da9-b72d-63d0b01447b6",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -229,37 +238,26 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "384e1e4f-70b1-4335-ab08-c2c1cfdd682b",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "78c2736c-3ebd-43bb-8e34-ff18466aee5e",
+                    "name": "",
+                    "id": "ca0313b4-7250-4431-aa0f-8e2f1439d5a5",
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Rotate",
+                    "action": "RotateLeft",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "positive",
-                    "id": "958c3d99-4024-4d85-9e1e-7330b66f9d77",
+                    "name": "",
+                    "id": "a54aafb1-b801-4abc-a9a5-5f0819c2fd17",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Rotate",
+                    "action": "RotateRight",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         }
