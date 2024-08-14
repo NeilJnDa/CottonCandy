@@ -129,36 +129,37 @@ public class FPSController : MonoBehaviour
 
     private void CameraRotation()
     {
-        // if there is an input
-        //if (_input.look.sqrMagnitude >= _threshold)
+        //if there is an input
+        if (_input.look.sqrMagnitude >= _threshold)
+        {
+                //Don't multiply mouse input by Time.deltaTime
+                float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+
+                _cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
+                _rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
+
+                // clamp our pitch rotation
+                _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+
+                // Update Cinemachine camera target pitch
+                CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+
+                // rotate the player left and right
+                transform.Rotate(Vector3.up * _rotationVelocity);
+        }
+
+        //  Q and E to rotate
+        //if(_input.rotateLeft)
         //{
-        //    //Don't multiply mouse input by Time.deltaTime
-        //    float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
-
-        //    _cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
-        //    _rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
-
-        //    // clamp our pitch rotation
-        //    _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
-
-        //    // Update Cinemachine camera target pitch
-        //    CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
-
-        //    // rotate the player left and right
-        //    transform.Rotate(Vector3.up * _rotationVelocity);
+        //    transform.Rotate(Vector3.up * -90f);
+        //    _input.rotateLeft = false;
         //}
+        //if (_input.rotateRight)
+        //{
+        //    transform.Rotate(Vector3.up * 90f);
+        //    _input.rotateRight = false;
 
-        if(_input.rotateLeft)
-        {
-            transform.Rotate(Vector3.up * -90f);
-            _input.rotateLeft = false;
-        }
-        if (_input.rotateRight)
-        {
-            transform.Rotate(Vector3.up * 90f);
-            _input.rotateRight = false;
-
-        }
+        //}
 
     }
 

@@ -17,16 +17,16 @@ public class HandInput : MonoBehaviour
     }
     private void Update()
     {
-        Vector3 newLocalEuler = transform.localEulerAngles + new Vector3(-input.look.y, 0, -input.look.x);
+        //Vector3 newLocalEuler = transform.localEulerAngles + new Vector3(-input.look.y, 0, -input.look.x);
 
-        newLocalEuler.x = NormalizeAngle(newLocalEuler.x);
-        newLocalEuler.z = NormalizeAngle(newLocalEuler.z);
+        //newLocalEuler.x = NormalizeAngle(newLocalEuler.x);
+        //newLocalEuler.z = NormalizeAngle(newLocalEuler.z);
 
-        newLocalEuler.x = Mathf.Clamp(newLocalEuler.x, rotateRangeMin, rotateRangeMax);
-        newLocalEuler.y = 0;
-        newLocalEuler.z = Mathf.Clamp(newLocalEuler.z, rotateRangeMin, rotateRangeMax);
+        //newLocalEuler.x = Mathf.Clamp(newLocalEuler.x, rotateRangeMin, rotateRangeMax);
+        //newLocalEuler.y = 0;
+        //newLocalEuler.z = Mathf.Clamp(newLocalEuler.z, rotateRangeMin, rotateRangeMax);
 
-        transform.localEulerAngles = newLocalEuler;
+        //transform.localEulerAngles = newLocalEuler;
     }
 
     // Function to normalize angles to the range -180 to 180 degrees
