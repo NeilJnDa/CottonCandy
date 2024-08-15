@@ -98,7 +98,7 @@ Material:
     - _DstBlendAlpha: 0
     - _Emission: 1.63
     - _EnvironmentReflections: 1
-    - _FadeNear: 14.92
+    - _FadeNear: 7.6
     - _FresnelOpacity: 0.1
     - _FresnelPower: 6.54
     - _GlossMapScale: 0
