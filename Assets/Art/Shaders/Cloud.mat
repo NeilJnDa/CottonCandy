@@ -96,19 +96,25 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
+    - _Emission: 1.63
     - _EnvironmentReflections: 1
+    - _FadeNear: 14.92
+    - _FresnelOpacity: 0.1
+    - _FresnelPower: 6.54
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Height: 6.42
+    - _Height: 1.28
+    - _MainHeight: 1.8
     - _Metallic: 0
-    - _MoveSpeed: 0.02
+    - _MoveSpeed: 0.03
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _PeekSpeed: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _SecondaryHeight: 0.4
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -120,10 +126,11 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BottomColor: {r: 0.5415094, g: 0.8378107, b: 1, a: 0}
+    - _BottomColor: {r: 0.71873975, g: 0.9547169, b: 0.9522579, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _PeekColor: {r: 1, g: 1, b: 1, a: 0}
+    - _PeekColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RimColor: {r: 0.82641506, g: 0.6296312, b: 0.22921322, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &330959616523168620
