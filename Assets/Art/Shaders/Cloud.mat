@@ -20,7 +20,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: _Contrast
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -68,6 +68,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TrailMap:
+        m_Texture: {fileID: 8400000, guid: 8fb524f45e9644c4e855e2e55da68be5, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -82,7 +86,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0
+    - _Alpha: 0.37
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _BaseSpeed: 0.1
@@ -100,7 +104,7 @@ Material:
     - _DstBlendAlpha: 0
     - _Emission: 1.2
     - _EnvironmentReflections: 1
-    - _FadeNear: 29.85
+    - _FadeNear: 16.62
     - _FresnelOpacity: 0.1
     - _FresnelPower: 6.54
     - _GlossMapScale: 0
@@ -124,6 +128,8 @@ Material:
     - _SrcBlendAlpha: 1
     - _Surface: 0
     - _TimeScale: 1
+    - _TrailFadeStrength: 69.2
+    - _TrailRadius: 44.5
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
