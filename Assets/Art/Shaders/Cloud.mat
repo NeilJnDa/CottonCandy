@@ -104,14 +104,14 @@ Material:
     - _DstBlendAlpha: 0
     - _Emission: 1.2
     - _EnvironmentReflections: 1
-    - _FadeNear: 16.62
+    - _FadeNear: 28.05
     - _FresnelOpacity: 0.1
     - _FresnelPower: 6.54
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Height: 1.28
-    - _MainHeight: 1.8
+    - _MainHeight: 0.6
     - _Metallic: 0
     - _MoveSpeed: 0.03
     - _OcclusionStrength: 1
@@ -120,7 +120,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _SecondaryHeight: 0.4
+    - _SecondaryHeight: 0.93
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -128,13 +128,13 @@ Material:
     - _SrcBlendAlpha: 1
     - _Surface: 0
     - _TimeScale: 1
-    - _TrailFadeStrength: 69.2
-    - _TrailRadius: 44.5
+    - _TrailFadeStrength: 32.8
+    - _TrailRadius: 22.67
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BottomColor: {r: 0.25648266, g: 0.7978698, b: 0.83396226, a: 0}
+    - _BottomColor: {r: 0.50492704, g: 0.8469162, b: 0.87169814, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _PeekColor: {r: 1, g: 1, b: 1, a: 1}
