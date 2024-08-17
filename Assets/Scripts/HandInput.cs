@@ -24,6 +24,7 @@ public class HandInput : MonoBehaviour
         newLocalPosition.x = Mathf.Clamp(newLocalPosition.x, initialLocalPosition.x - moveRangeX, initialLocalPosition.x + moveRangeX);
         newLocalPosition.z = Mathf.Clamp(newLocalPosition.z, initialLocalPosition.z - moveRangeZ, initialLocalPosition.z + moveRangeZ);
         transform.localPosition = newLocalPosition;
+
     }
 
     // Function to normalize angles to the range -180 to 180 degrees
