@@ -117,7 +117,7 @@ public class FPSController : MonoBehaviour
 
     private void LateUpdate()
     {
-        CameraRotation();
+        //CameraRotation();
     }
 
     private void GroundedCheck()
@@ -158,7 +158,6 @@ public class FPSController : MonoBehaviour
         //{
         //    transform.Rotate(Vector3.up * 90f);
         //    _input.rotateRight = false;
-
         //}
 
     }

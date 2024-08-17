@@ -14,8 +14,6 @@ public class PlayerInputRouter : MonoBehaviour
     public Vector2 look;
     public bool jump;
     public bool sprint;
-    public bool rotateLeft;
-    public bool rotateRight;
 
     [Header("Movement Settings")]
     public bool analogMovement;
@@ -48,17 +46,6 @@ public class PlayerInputRouter : MonoBehaviour
         SprintInput(value.isPressed);
     }
 
-    public void OnRotateLeft(InputValue value)
-    {
-        RotateLeftInput(value.isPressed);
-    }
-
-    public void OnRotateRight(InputValue value)
-    {
-        RotateRightInput(value.isPressed);
-    }
-
-
 #endif
 
 
@@ -80,15 +67,6 @@ public class PlayerInputRouter : MonoBehaviour
     public void SprintInput(bool newSprintState)
     {
         sprint = newSprintState;
-    }
-
-    private void RotateLeftInput(bool newRotateLeftState)
-    {
-        rotateLeft = newRotateLeftState;
-    }
-    private void RotateRightInput(bool newRotateRightState)
-    {
-        rotateRight = newRotateRightState;
     }
 
     private void OnApplicationFocus(bool hasFocus)
