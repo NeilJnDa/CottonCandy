@@ -1,58 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO.Pipes;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CottonCandy : MonoBehaviour
 {
     [SerializeField] private float growSpeed = 0.1f;
-    MeshFilter meshFilter;
-    // Start is called before the first frame update
+    [SerializeField] private bool growing = false;
+    [SerializeField] private float minGrowTime = 0.2f;
+    private float timer = 0;
+    MeshRenderer m_renderer;
+    int growingID;
+    int originID;
+    int directionID;
+    int radiusID;
+    int growSpeedID;
+
     void Start()
     {
-        meshFilter = GetComponent<MeshFilter>();
+        m_renderer = GetComponent<MeshRenderer>();
+        growingID = Shader.PropertyToID("_Growing");
+        originID = Shader.PropertyToID("_Origin");
+        directionID = Shader.PropertyToID("_Direction");
+        radiusID = Shader.PropertyToID("_Radius");
+        growSpeedID = Shader.PropertyToID("_GrowSpeed");
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Grow(Vector3 origin, Vector3 up, float radius)
     {
-        if (meshFilter != null)
+        m_renderer.material.SetFloat(growingID, 1f);
+        m_renderer.material.SetVector(originID, origin);
+        m_renderer.material.SetVector(directionID, up);
+        m_renderer.material.SetFloat(radiusID, radius);
+        m_renderer.material.SetFloat(growSpeedID, growSpeed);
+        growing = true;
+        timer = minGrowTime;
+    }
+
+    private void Update()
+    {
+        if(growing)
         {
-            Mesh mesh = meshFilter.mesh;
-
-            Vector3[] vertices = mesh.vertices;
-            int[] triangles = mesh.triangles;
-            Vector3[] normals = mesh.normals;
-
-            // Loop through all triangles
-            for (int i = 0; i < triangles.Length; i += 3)
+            timer -= Time.deltaTime;
+            if(timer < 0)
             {
-                // Get the indices of the three vertices of the triangle
-                int index1 = triangles[i];
-                int index2 = triangles[i + 1];
-                int index3 = triangles[i + 2];
+                growing = false;
+                m_renderer.material.SetFloat(growingID, 0f);
 
-                // Calculate the normal of the triangle
-                Vector3 normal = (normals[index1] + normals[index2] + normals[index3]) / 3f;
-
-                // Check if the normal is pointing downward
-                if (Vector3.Dot(normal, Vector3.down) > 0.5f) // Adjust threshold as needed
-                {
-                    // Pull the vertices along their normal
-                    vertices[index1] += normals[index1] * growSpeed;
-                    vertices[index2] += normals[index2] * growSpeed;
-                    vertices[index3] += normals[index3] * growSpeed;
-                }
             }
-
-            // Apply the modified vertices back to the mesh
-            mesh.vertices = vertices;
-            mesh.RecalculateNormals();
-            mesh.RecalculateBounds();
-
         }
-    }
-    public void Grow()
-    {
-        Debug.Log("Grow");
     }
 }

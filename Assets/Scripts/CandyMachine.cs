@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CandyMachine : MonoBehaviour
 {
-    [field:SerializeField]
+    [field: SerializeField]
     public bool Running { get; private set; }
 
     [SerializeField]
@@ -13,23 +13,24 @@ public class CandyMachine : MonoBehaviour
 
     private void Update()
     {
-        if(Running)
+        if (Running)
         {
             var hits = Physics.OverlapBox(effectArea.transform.position + effectArea.center, effectArea.size / 2f, effectArea.transform.rotation);
-            foreach(var hit in hits)
+            foreach (var hit in hits)
             {
                 var cottonCandy = hit.GetComponent<CottonCandy>();
-                if(cottonCandy != null)
+                if (cottonCandy != null)
                 {
-                    cottonCandy.Grow();
+                    cottonCandy.Grow(effectArea.transform.position, effectArea.transform.up, effectArea.size.x / 2f);
 
                 }
+
             }
         }
     }
     public void StartMachine()
     {
-        if(Running== false)
+        if (Running == false)
         {
             Running = true;
             effectArea.enabled = true;
