@@ -67,7 +67,7 @@ public class BlurRenderPass : ScriptableRenderPass
         Blit(cmd, cameraTargetHandle, blurTextureHandle, material, 0);
         // Blit from the temporary render texture to the camera target,
         // using the second shader pass.
-        Blit(cmd, blurTextureHandle, cameraTargetHandle, material, 0);
+        Blit(cmd, blurTextureHandle, cameraTargetHandle, material, 1);
 
         //Execute the command buffer and release it back to the pool.
         context.ExecuteCommandBuffer(cmd);

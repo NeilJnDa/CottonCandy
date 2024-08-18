@@ -83,7 +83,7 @@ Shader "Custom/BendingEffect"
             v2f vert(appdata_t v)
             {
                 v2f o;
-                o.pos = mul(UNITY_MATRIX_VP, v.pos);
+                o.pos = mul(UNITY_MATRIX_VP, v.vertex);
                 o.uv = v.uv;
                 return o;
             }
