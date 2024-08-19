@@ -8,49 +8,69 @@ using UnityEngine.UIElements;
 public class CottonCandy : MonoBehaviour
 {
     [SerializeField] private float growSpeed = 0.1f;
-    [SerializeField] private bool growing = false;
-    [SerializeField] private float minGrowTime = 0.2f;
-    private float timer = 0;
-    MeshRenderer m_renderer;
-    int growingID;
-    int originID;
-    int directionID;
-    int radiusID;
-    int growSpeedID;
+
+    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private MeshFilter meshFilter;
+
+    //int growingID;
+    //int originID;
+    //int directionID;
+    //int radiusID;
+    //int growSpeedID;
 
     void Start()
     {
-        m_renderer = GetComponent<MeshRenderer>();
-        growingID = Shader.PropertyToID("_Growing");
-        originID = Shader.PropertyToID("_Origin");
-        directionID = Shader.PropertyToID("_Direction");
-        radiusID = Shader.PropertyToID("_Radius");
-        growSpeedID = Shader.PropertyToID("_GrowSpeed");
+        //growingID = Shader.PropertyToID("_Growing");
+        //originID = Shader.PropertyToID("_Origin");
+        //directionID = Shader.PropertyToID("_Direction");
+        //radiusID = Shader.PropertyToID("_Radius");
+        //growSpeedID = Shader.PropertyToID("_GrowSpeed");
 
     }
 
-    public void Grow(Vector3 origin, Vector3 up, float radius)
+    public void Grow(Vector3 origin, Vector3 up, float radius, float deltaTime)
     {
-        m_renderer.material.SetFloat(growingID, 1f);
-        m_renderer.material.SetVector(originID, origin);
-        m_renderer.material.SetVector(directionID, up);
-        m_renderer.material.SetFloat(radiusID, radius);
-        m_renderer.material.SetFloat(growSpeedID, growSpeed);
-        growing = true;
-        timer = minGrowTime;
-    }
+        //meshRenderer.material.SetFloat(growingID, 1f);
+        //meshRenderer.material.SetVector(originID, origin);
+        //meshRenderer.material.SetVector(directionID, up);
+        //meshRenderer.material.SetFloat(radiusID, radius);
+        //meshRenderer.material.SetFloat(growSpeedID, growSpeed);
 
-    private void Update()
-    {
-        if(growing)
+        //  Transform to local
+        origin = meshFilter.transform.InverseTransformPoint(origin);
+        up = meshFilter.transform.InverseTransformDirection(up);
+        radius = meshFilter.transform.InverseTransformVector(new Vector3(radius, 0, 0)).magnitude;
+        if (meshFilter != null)
         {
-            timer -= Time.deltaTime;
-            if(timer < 0)
-            {
-                growing = false;
-                m_renderer.material.SetFloat(growingID, 0f);
+            Mesh mesh = meshFilter.mesh;
 
+            Vector3[] vertices = mesh.vertices;
+            Vector3[] normals = mesh.normals;
+
+            // Loop through all triangles
+            for (int i = 0; i < vertices.Length; ++i)
+            {
+                //Shortest distance from vertext to up normal
+                var shortest = Vector3.Distance(Vector3.Project(vertices[i] - origin, up) + origin, vertices[i]);
+                var k1 = 1f - Mathf.Clamp01(shortest / radius);
+
+                //If the vertex is not directly facing the machine, then it grows slower
+                var k2 = Vector3.Dot(normals[i], -up);
+                if (k2 < -0.6f) k2 = 0;
+                else k2 = 1;
+
+                if (k1 * k2 < 0) continue;
+
+                vertices[i] += k1 * k2 * deltaTime * growSpeed * (-up);
             }
+
+            // Apply the modified vertices back to the mesh
+            mesh.vertices = vertices;
+            //mesh.RecalculateNormals();
+            //mesh.RecalculateBounds();
         }
+
+
     }
+
 }

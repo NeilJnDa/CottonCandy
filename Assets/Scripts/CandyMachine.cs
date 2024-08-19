@@ -9,23 +9,30 @@ public class CandyMachine : MonoBehaviour
 
     [SerializeField]
     private BoxCollider effectArea;
+    [SerializeField] private float radius = 0.02f;
 
+    [SerializeField] private float interval = 0.2f;
+    private float timer = 0;
 
     private void Update()
     {
         if (Running)
         {
-            var hits = Physics.OverlapBox(effectArea.transform.position + effectArea.center, effectArea.size / 2f, effectArea.transform.rotation);
-            foreach (var hit in hits)
+            timer -= Time.deltaTime;
+            if(timer <= 0)
             {
-                var cottonCandy = hit.GetComponent<CottonCandy>();
-                if (cottonCandy != null)
+                timer = interval;
+                var hits = Physics.OverlapBox(effectArea.transform.position + effectArea.center, effectArea.size / 2f, effectArea.transform.rotation);
+                foreach (var hit in hits)
                 {
-                    cottonCandy.Grow(effectArea.transform.position, effectArea.transform.up, effectArea.size.x / 2f);
-
+                    var cottonCandy = hit.GetComponent<CottonCandy>();
+                    if (cottonCandy != null)
+                    {
+                        cottonCandy.Grow(effectArea.transform.position, effectArea.transform.up, radius, interval);
+                    }
                 }
-
             }
+
         }
     }
     public void StartMachine()

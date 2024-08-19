@@ -14,6 +14,11 @@ public class HandInput : MonoBehaviour
     [SerializeField] private float moveRangeX = 0.2f;
     [SerializeField] private float moveRangeZ = 0.2f;
 
+    [SerializeField] private float rotateSpeed = 1f;
+
+    [SerializeField] private Transform toRotateTransform;
+
+
     private void Start()
     {
         initialLocalPosition = transform.localPosition;
@@ -25,6 +30,8 @@ public class HandInput : MonoBehaviour
         newLocalPosition.z = Mathf.Clamp(newLocalPosition.z, initialLocalPosition.z - moveRangeZ, initialLocalPosition.z + moveRangeZ);
         transform.localPosition = newLocalPosition;
 
+        //  Rotate
+        toRotateTransform.Rotate(Vector3.up, rotateSpeed * Time.deltaTime);
     }
 
     // Function to normalize angles to the range -180 to 180 degrees
