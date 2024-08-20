@@ -59,7 +59,6 @@ public class Hand : MonoBehaviour
     {
         if(cottonCandyPrefab!= null)
         {
-            cottonCandyParentTransform.localScale = Vector3.zero;
             var newCandy = Instantiate(cottonCandyPrefab, cottonCandyParentTransform);
             newCandy.transform.position = cottonCandyParentTransform.position;
             newCandy.transform.rotation = cottonCandyParentTransform.rotation;

@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator BlockInput(float duration)
     {
+        allowInput = false;
         yield return new WaitForSeconds(duration);
         allowInput = true;
     }
@@ -130,14 +131,18 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FlyCandy()
     {
+        allowInput = false;
         hand.cottonCandy.transform.parent = farSky.transform;
         var newPos = farSky.transform.position + new Vector3(Random.Range(-farSkyXYRange, farSkyXYRange), 0, Random.Range(-farSkyXYRange, farSkyXYRange));
-        hand.cottonCandy.transform.DOMove(newPos, 3f);
-        hand.cottonCandy.transform.DOScale(farSky.transform.localScale, 3f);
-        yield return new WaitForSeconds(4f);
+        hand.cottonCandy.transform.DOMove(newPos, 2f);
+        hand.cottonCandy.transform.DOScale(farSky.transform.localScale, 2f);
+        yield return new WaitForSeconds(2f);
+        hand.cottonCandy.transform.DOScale(farSky.transform.localScale * 2f, 1f).SetEase(Ease.InElastic);
+        yield return new WaitForSeconds(2f);
+
         hand.AttachNewCandy();
         TransitToStage(GameStage.Making);
-
+        allowInput = true;
     }
     public void TransitToStage(GameStage stage)
     {
@@ -181,7 +186,7 @@ public class GameManager : MonoBehaviour
             playerTransform.DORotateQuaternion(playerMakingTransform.rotation, 1f);
 
             StopAllCoroutines();
-            StartCoroutine(BlockInput(3f));
+            StartCoroutine(BlockInput(2f));
         }
         else if(stage == GameStage.HeadUp)
         {
@@ -190,7 +195,7 @@ public class GameManager : MonoBehaviour
 
             headUpCanvasGroup.DOFade(1f, 1f);
             StopAllCoroutines();
-            StartCoroutine(BlockInput(3f));
+            StartCoroutine(BlockInput(1f));
 
         }
     }
