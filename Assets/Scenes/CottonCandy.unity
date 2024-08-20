@@ -1002,6 +1002,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591508145}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &601875092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 601875093}
+  m_Layer: 0
+  m_Name: FarSky
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &601875093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601875092}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.2, y: 4.9, z: 0}
+  m_LocalScale: {x: 2.24, y: 2.24, z: 2.24}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &608708728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7835,6 +7866,8 @@ MonoBehaviour:
   playerMakingTransform: {fileID: 1101799609}
   headUpCanvasGroup: {fileID: 421267095}
   playerHeadUpTransform: {fileID: 469045420}
+  farSky: {fileID: 601875093}
+  farSkyXYRange: 10
 --- !u!1 &2016370136
 GameObject:
   m_ObjectHideFlags: 0
@@ -13556,3 +13589,4 @@ SceneRoots:
   - {fileID: 1275670250}
   - {fileID: 2019604570}
   - {fileID: 228792273}
+  - {fileID: 601875093}

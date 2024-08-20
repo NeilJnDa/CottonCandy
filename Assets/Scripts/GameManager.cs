@@ -63,8 +63,8 @@ public class GameManager : MonoBehaviour
     [Header("Head Up Stage")]
     [SerializeField] CanvasGroup headUpCanvasGroup;
     [SerializeField] Transform playerHeadUpTransform;
-
-
+    [SerializeField] Transform farSky;
+    [SerializeField] float farSkyXYRange = 10f;
     private void Start()
     {
         Camera.main.GetComponent<CinemachineBrain>().m_DefaultBlend = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.Cut, 0f);
@@ -104,22 +104,41 @@ public class GameManager : MonoBehaviour
                 TransitToStage(GameStage.Making);
             }
         }
-        if (currentStage == GameStage.Making)
+        else if (currentStage == GameStage.Making)
         {
             if (Input.anyKeyDown)
             {
                 TransitToStage(GameStage.HeadUp);
             }
         }
-        if (currentStage == GameStage.HeadUp)
+        else if(currentStage == GameStage.HeadUp)
         {
-            if (Input.anyKeyDown)
+            if (Input.GetKeyDown(KeyCode.R))
             {
+                hand.DeleteOldCandy();
+                hand.AttachNewCandy();
                 TransitToStage(GameStage.Making);
+            }
+            else if (Input.anyKeyDown)
+            {
+                // Fly the candy
+                StopAllCoroutines();            
+                StartCoroutine(FlyCandy());
             }
         }
     }
 
+    IEnumerator FlyCandy()
+    {
+        hand.cottonCandy.transform.parent = farSky.transform;
+        var newPos = farSky.transform.position + new Vector3(Random.Range(-farSkyXYRange, farSkyXYRange), 0, Random.Range(-farSkyXYRange, farSkyXYRange));
+        hand.cottonCandy.transform.DOMove(newPos, 3f);
+        hand.cottonCandy.transform.DOScale(farSky.transform.localScale, 3f);
+        yield return new WaitForSeconds(4f);
+        hand.AttachNewCandy();
+        TransitToStage(GameStage.Making);
+
+    }
     public void TransitToStage(GameStage stage)
     {
         //  Leave current stage
@@ -128,13 +147,13 @@ public class GameManager : MonoBehaviour
             titleCanvasGroup.DOFade(0f, 1f);
 
         }
-        if (currentStage == GameStage.Making)
+        else if(currentStage == GameStage.Making)
         {
             makingCanvasGroup.DOFade(0f, 1f);
             machine.StopMachine();
             
         }
-        if (currentStage == GameStage.HeadUp)
+        else if(currentStage == GameStage.HeadUp)
         {
             headUpCanvasGroup.DOFade(0f, 1f);
         }
@@ -149,7 +168,7 @@ public class GameManager : MonoBehaviour
 
             titleCanvasGroup.DOFade(1f, 1f);
         }
-        if (stage == GameStage.Making)
+        else if(stage == GameStage.Making)
         {
             titleSceneVirtualCamera.m_Priority = 1;
             makingVirtualCamera.m_Priority = 10;
@@ -164,7 +183,7 @@ public class GameManager : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(BlockInput(3f));
         }
-        if (stage == GameStage.HeadUp)
+        else if(stage == GameStage.HeadUp)
         {
             playerTransform.DOMove(playerHeadUpTransform.position, 1f);
             playerTransform.DORotateQuaternion(playerHeadUpTransform.rotation, 1f);
@@ -172,7 +191,6 @@ public class GameManager : MonoBehaviour
             headUpCanvasGroup.DOFade(1f, 1f);
             StopAllCoroutines();
             StartCoroutine(BlockInput(3f));
-
 
         }
     }

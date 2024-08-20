@@ -66,4 +66,11 @@ public class Hand : MonoBehaviour
             cottonCandy = newCandy.GetComponent<CottonCandy>();
         }
     }
+    public void DeleteOldCandy()
+    {
+        if(cottonCandy != null)
+        {
+            Destroy(cottonCandy.gameObject);
+        }
+    }
 }
