@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,14 @@ public class CandyMachine : MonoBehaviour
 
     [SerializeField] private float interval = 0.2f;
     private float timer = 0;
+    [SerializeField] private ParticleSystem particle;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private float maxVolumn = 0.3f;
 
+    private void Start()
+    {
+        audioSource.volume = 0f;
+    }
     private void Update()
     {
         if (Running)
@@ -41,6 +49,8 @@ public class CandyMachine : MonoBehaviour
         {
             Running = true;
             effectArea.enabled = true;
+            particle.Play();
+            audioSource.DOFade(maxVolumn, 1f);
         }
     }
     public void StopMachine()
@@ -49,6 +59,9 @@ public class CandyMachine : MonoBehaviour
         {
             Running = false;
             effectArea.enabled = false;
+            particle.Stop();
+            audioSource.DOFade(0f, 1f);
+
         }
     }
 

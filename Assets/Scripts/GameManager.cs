@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     [ReadOnly] private bool allowInput;
     private float timer;
+    [SerializeField]
+    private Transform playerTransform;
 
     [Header("Title Stage")]
     [SerializeField] private CinemachineVirtualCamera titleSceneVirtualCamera;
@@ -56,17 +58,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] CanvasGroup makingCanvasGroup;
     [SerializeField] CandyMachine machine;
     [SerializeField] Hand hand;
+    [SerializeField] Transform playerMakingTransform;
 
     [Header("Head Up Stage")]
-    [SerializeField] private CinemachineVirtualCamera headUpVirtualCamera;
     [SerializeField] CanvasGroup headUpCanvasGroup;
+    [SerializeField] Transform playerHeadUpTransform;
+
 
     private void Start()
     {
         Camera.main.GetComponent<CinemachineBrain>().m_DefaultBlend = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.Cut, 0f);
         titleSceneVirtualCamera.m_Priority = 1;
         makingVirtualCamera.m_Priority = 1;
-        headUpVirtualCamera.m_Priority = 1;
         Camera.main.GetComponent<CinemachineBrain>().m_DefaultBlend = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.EaseInOut, 1f);
 
 
@@ -77,7 +80,7 @@ public class GameManager : MonoBehaviour
         machine.StopMachine();
         hand.allowInput = false;
         TransitToStage(GameStage.TitleScene);
-
+        StopAllCoroutines();
         StartCoroutine(BlockInput(2f));
 
 
@@ -138,11 +141,11 @@ public class GameManager : MonoBehaviour
 
         //  Enter new stage
         currentStage = stage;
+
         if (stage == GameStage.TitleScene)
         {
             titleSceneVirtualCamera.m_Priority = 10;
             makingVirtualCamera.m_Priority = 1;
-            headUpVirtualCamera.m_Priority = 1;
 
             titleCanvasGroup.DOFade(1f, 1f);
         }
@@ -150,21 +153,25 @@ public class GameManager : MonoBehaviour
         {
             titleSceneVirtualCamera.m_Priority = 1;
             makingVirtualCamera.m_Priority = 10;
-            headUpVirtualCamera.m_Priority = 1;
 
             makingCanvasGroup.DOFade(1f, 1f);
             machine.StartMachine();
             hand.allowInput = true;
+
+            playerTransform.DOMove(playerMakingTransform.position, 1f);
+            playerTransform.DORotateQuaternion(playerMakingTransform.rotation, 1f);
+
+            StopAllCoroutines();
             StartCoroutine(BlockInput(3f));
         }
         if (stage == GameStage.HeadUp)
         {
-            titleSceneVirtualCamera.m_Priority = 1;
-            makingVirtualCamera.m_Priority = 1;
-            headUpVirtualCamera.m_Priority = 10;
+            playerTransform.DOMove(playerHeadUpTransform.position, 1f);
+            playerTransform.DORotateQuaternion(playerHeadUpTransform.rotation, 1f);
 
             headUpCanvasGroup.DOFade(1f, 1f);
-            StartCoroutine(BlockInput(1f));
+            StopAllCoroutines();
+            StartCoroutine(BlockInput(3f));
 
 
         }

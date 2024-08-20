@@ -125,8 +125,9 @@ Material:
     - _EnvironmentReflections: 1
     - _FadeNear: 0
     - _Focus: 1
-    - _FresnelOpacity: 1.18
-    - _FresnelPower: 2.99
+    - _FresnelOpacity: 1.82
+    - _FresnelPower: 6.28
+    - _FresnelSecondPower: 0.26
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -136,10 +137,13 @@ Material:
     - _MainHeight: 1.09
     - _MainScale: 20
     - _Metallic: 0
+    - _MinAlpha: 0.76
     - _MoveSpeed: 0
+    - _NoisePower: 0.19
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _PushOut: -0.13
+    - _PushOut: 1.94
+    - _PushOutPower: 7.16
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Radius: 0
