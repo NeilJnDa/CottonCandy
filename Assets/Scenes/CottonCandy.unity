@@ -614,7 +614,7 @@ MonoBehaviour:
   moveSpeed: 0.015
   moveRangeX: 0.2
   moveRangeZ: 0.2
-  rotateSpeed: 60
+  rotateSpeed: 30
   toRotateTransform: {fileID: 196957774}
 --- !u!1 &542508511
 GameObject:
@@ -7543,7 +7543,7 @@ PrefabInstance:
     - target: {fileID: 7633546389769842467, guid: 34cc2f6e6eea9b54cad506a48e245a25,
         type: 3}
       propertyPath: growSpeed
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7633546389769842467, guid: 34cc2f6e6eea9b54cad506a48e245a25,
         type: 3}
