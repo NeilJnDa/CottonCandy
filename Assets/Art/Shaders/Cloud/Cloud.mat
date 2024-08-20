@@ -97,6 +97,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Contrast: 0.95
     - _Cull: 2
+    - _CurvedAmount: 0.02
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
@@ -104,14 +105,14 @@ Material:
     - _DstBlendAlpha: 0
     - _Emission: 0.9
     - _EnvironmentReflections: 1
-    - _FadeNear: 6.88
+    - _FadeNear: 7.1
     - _FresnelOpacity: 0.1
     - _FresnelPower: 6.54
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Height: 1.28
-    - _MainHeight: 0.33
+    - _MainHeight: 0.14
     - _Metallic: 0
     - _MoveSpeed: 0.005
     - _OcclusionStrength: 1
@@ -120,7 +121,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _SecondaryHeight: 1.2
+    - _SecondaryHeight: 2.54
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -128,8 +129,8 @@ Material:
     - _SrcBlendAlpha: 1
     - _Surface: 0
     - _TimeScale: 1
-    - _TrailFadeStrength: 32
-    - _TrailRadius: 10
+    - _TrailFadeStrength: 10.89
+    - _TrailRadius: 6.84
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
