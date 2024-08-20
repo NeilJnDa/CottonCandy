@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CottonCandy
-  m_Shader: {fileID: -6465566751694194690, guid: 109b94162c981104b8080c5814b83896,
+  m_Shader: {fileID: -6465566751694194690, guid: e47bba154f79baf49be305aee8283483,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -63,6 +63,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _GrowMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -83,6 +87,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TrailMap:
+        m_Texture: {fileID: 8400000, guid: 8fb524f45e9644c4e855e2e55da68be5, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -97,6 +105,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Alpha: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -104,37 +113,59 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _Contrast: 1
     - _Cull: 2
+    - _CurvedAmount: 0
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _DstBlendAlpha: 10
+    - _Emission: 0.6
     - _EnvironmentReflections: 1
+    - _FadeNear: 0
+    - _Focus: 1
+    - _FresnelOpacity: 1.18
+    - _FresnelPower: 2.99
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _GrowSpeed: 0
+    - _Growing: 0
+    - _Intensity: 1
+    - _MainHeight: 1.09
+    - _MainScale: 20
     - _Metallic: 0
+    - _MoveSpeed: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _PushOut: -0.13
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Radius: 0
     - _ReceiveShadows: 1
+    - _SecondaryHeight: 0.8
+    - _SecondaryScale: 20
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 1
+    - _TrailFadeStrength: 0
+    - _TrailRadius: 0
     - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BottomColor: {r: 1, g: 0.9803922, b: 0.89019614, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Direction: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _MainColor: {r: 0.9924528, g: 0.8894624, b: 0.8939402, a: 0}
     - _Origin: {r: 0, g: 0, b: 0, a: 0}
+    - _PeekColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 0}
+    - _SecondaryColor: {r: 0.9169811, g: 0.84258455, b: 0.84258455, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
